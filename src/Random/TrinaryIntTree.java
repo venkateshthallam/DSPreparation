@@ -1,4 +1,4 @@
-package Random;
+package src.Random;
 
 /**
  * Implements a tri-node tree similar to a binary tree

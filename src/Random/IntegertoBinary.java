@@ -1,4 +1,4 @@
-package Random;
+package src.Random;
 
 public class IntegertoBinary {
 

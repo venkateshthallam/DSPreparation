@@ -1,4 +1,4 @@
-package Sorting;
+package src.Sorting;
 
 public class QuickSort 
 {
