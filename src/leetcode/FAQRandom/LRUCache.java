@@ -3,6 +3,7 @@ package src.leetcode.FAQRandom;
 import java.util.Hashtable;
 
 public class LRUCache {
+    
 
 	class DNode{
 	    int key;
@@ -45,12 +46,84 @@ public class LRUCache {
 	}
 	
 	private Hashtable<Integer,DNode> cache = new Hashtable<Integer,DNode>(); 
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private int count, capacity;
+	 
+	public LRUCache(int capacity){
+		this.count = 0;
+		this.capacity = capacity;
+		
+		head = new DNode();
+		head.pre = null;
+		
+		tail = new DNode();
+		tail.post = null;
+		
+		head.post = tail;
+		tail.pre = head;
 	}
+	
+	public int get(int key){
+		
+		DNode node = cache.get(key);
+		if(node == null)
+			return -1;
+		
+		this.moveToHead(node);
+		
+		return node.value;
+		
+	}
+	
+	public void put(int key, int value){
+		
+		DNode node = cache.get(key);
+		
+		if(node == null){
+			
+			DNode newNode = new DNode();
+			newNode.key = key;
+			newNode.value = value;
+			
+			this.cache.put(key, newNode);
+			this.addNode(newNode);
+			
+			++count;
+			
+			if(count > capacity){
+				DNode tail = this.popTail();
+				this.cache.remove(key);
+				--count;
+				
+			}
+			
+		}else{
+			node.value = value;
+			this.moveToHead(node);
+		}
+		
+	}
+	
+	public void printCache(){
+		System.out.println(cache.keySet());
+		for(int key : cache.keySet()){
+			System.out.println(key+", ");
+		}
+	}
+	
+	public static void main(String[] args){
+		
+		LRUCache cache = new LRUCache(2);
+		
+		cache.put(1, 1);
+		cache.put(2, 2);
+		cache.put(3, 3);
+		cache.get(2);
+		cache.put(4, 4);
+		
+		cache.printCache();
+		
 
+		
+	}
 }
+
