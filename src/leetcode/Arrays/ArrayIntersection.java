@@ -32,6 +32,6 @@ public class ArrayIntersection {
 		
 		int[] arr1 = {1,2,2,3,4};
 		int[] arr2 = {2,4};
-		new ArrayIntersection().intersection(arr1, arr2);s
+		new ArrayIntersection().intersection(arr1, arr2);
 	}
 }
