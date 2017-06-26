@@ -6,15 +6,15 @@ import java.util.Map;
 public class KDiffPairs {
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 3, 1, 5, 4 };
-		System.out.println(findPairs(nums, 2));
+		int[] numbers = { 1, 3, 1, 5, 4 };
+		System.out.println(findPairs(numbers, 2));
 	}
 
-	public static int findPairs(int[] nums, int k) {
-		if(nums == null || nums.length == 0 || k < 0) return 0;
+	public static int findPairs(int[] numbers, int k) {
+		if(numbers == null || numbers.length == 0 || k < 0) return 0;
 		Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
 		int totalKDiffPairs = 0;
-		for (int x : nums) {
+		for (int x : numbers) {
 			numMap.put(x, numMap.getOrDefault(x, 0) + 1);
 		}
 
